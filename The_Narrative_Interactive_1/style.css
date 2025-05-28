@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    background-color: #131313;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.screen, .inv, .text {
+    border: 5px solid white;
+    border-radius: 5px;
+}
+
+.screen, .inv {
+    height: 650px;
+}
+
+.screen {
+    width: 1350px;
+}
+
+.text {
+    height: 200px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.inv-top {
+    padding-top: 10px;
+}
