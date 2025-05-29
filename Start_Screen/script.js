@@ -25,12 +25,16 @@ function updateNum() {
         startScreen.style.display = "none"
         title.style.display = "none"
         startBtn.style.display = "none"
+        backBtn.style.display = "none"
+        files.style.display = "none"
     } else {
         loadingContainer.style.display = 'none'
         startScreen.style.display = "block"
         title.style.display = "block"
         title.style.color = "white"
         startBtn.style.display = "block"
+        // Hides the back button
+        backBtn.style.display = "none"
     }
 
     // if(idx > 100){
@@ -42,12 +46,28 @@ function updateNum() {
 
 // Start Screen
 
+
 startBtn.addEventListener("click", ()=> {
          startScreen.style.display = "none"
         title.style.display = "none"
         startBtn.style.display = "none"
         files.style.display = "block"
+        //back button display
+        backBtn.style.display = "block"
 })
+
+//BACK BUTTON DISPLAY START
+backBtn.addEventListener("click", () => {
+    startScreen.style.display = "block"
+    title.style.display = "block"
+    startBtn.style.display = "block"
+    backBtn.style.display = "none"
+    files.style.display = "none"
+})
+
+
+
+//BACK BUTTON DISPLAY END
 
 
 // Save File Screen 

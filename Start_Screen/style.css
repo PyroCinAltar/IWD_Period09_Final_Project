@@ -44,12 +44,24 @@ body {
     margin: 0 auto;
 }
 
-.back-to-start {
-    display: none;
+.backBtnContainer {
+    position: fixed;
+    display: block;
+    top: 10px;
+    left: 10px;
+     height: 30px;
+    width: 60px;
 }
 
 .file-container {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 5px white solid;
+    height: 32vh;
+    width: 20vh;
+
 }
 
 .start-screen {
@@ -68,4 +80,7 @@ body {
 }
 .title-screen {
     color: wheat;
+}
+.file {
+    border: 2px white solid;
 }
