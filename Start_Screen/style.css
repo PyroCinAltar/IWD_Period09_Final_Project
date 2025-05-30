@@ -59,7 +59,7 @@ body {
     justify-content: center;
     align-items: center;
     border: 5px white solid;
-    height: 32vh;
+    height: 37vh;
     width: 20vh;
 
 }
@@ -83,4 +83,20 @@ body {
 }
 .file {
     border: 2px white solid;
+    height: 12vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.linkBtn {
+    font-weight: 1000;
+    text-decoration: none;
+    color: white;
+}
+.linkBtn:hover {
+    font-weight: 1000;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
 }

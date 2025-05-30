@@ -14,6 +14,10 @@ const backBtn =  document.querySelector('.back-to-startBtn')
 const files = document.querySelector('.file-container')
 
 
+
+
+
+
 let idx = 0;
 
 updateNum()
@@ -64,6 +68,14 @@ backBtn.addEventListener("click", () => {
     backBtn.style.display = "none"
     files.style.display = "none"
 })
+
+
+
+//Storage //
+
+localStorage.setItem("Pogress, ")
+
+
 
 
 
