@@ -13,9 +13,10 @@ const startScreen = document.querySelector(".start-screen")
 const backBtn =  document.querySelector('.back-to-startBtn')
 const files = document.querySelector('.file-container')
 
-
-
-
+// Start file buttons
+const linkBtn1 = document.querySelector(".linkBtn1")
+const linkBtn2 = document.querySelector(".linkBtn2")
+const linkBtn3 = document.querySelector(".linkBtn3")
 
 
 let idx = 0;
@@ -68,6 +69,13 @@ backBtn.addEventListener("click", () => {
     backBtn.style.display = "none"
     files.style.display = "none"
 })
+
+//File start 
+linkBtn1.addEventListener("click", () => {
+    window.location.href = "The_Narrative_Interactive_1/index.html"
+})
+
+
 
 
 
