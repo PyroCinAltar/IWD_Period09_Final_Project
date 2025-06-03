@@ -71,8 +71,16 @@ backBtn.addEventListener("click", () => {
 })
 
 //File start 
-linkBtn1.addEventListener("click", () => {
+linkBtn1.addEventListener("click", (e) => {
+    e.preventDefault()
     window.location.href = "The_Narrative_Interactive_1/index.html"
+})
+linkBtn2.addEventListener("click", (e) => {
+    e.preventDefault()
+})
+
+linkBtn3.addEventListener("click", (e) => {
+    e.preventDefault()
 })
 
 
@@ -81,7 +89,7 @@ linkBtn1.addEventListener("click", () => {
 
 //Storage //
 
-localStorage.setItem("Pogress, ")
+
 
 
 
