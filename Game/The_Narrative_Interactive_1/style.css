@@ -6,7 +6,7 @@ body {
 .screen,
 .inv {
     border: 10px solid white;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     height: 100vh;
     display: flex;
     align-items: center;
@@ -17,6 +17,7 @@ body {
     align-items: flex-end;
     border-left: none;
     background-color: cadetblue;
+    border-right: none;
 }
 
 .inv {
@@ -35,9 +36,9 @@ body {
     width: 100%;
     box-sizing: border-box;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     background-color: #131313;
+
 }
 
 .inv-top {
@@ -53,4 +54,36 @@ body {
     padding: 2px;
     width: 20vh;
     right: 0;
+}
+
+.option {
+    border: none;
+    border-radius: 30px;
+    margin: 10px;
+    width: 20vh;
+    background-color: pink;
+    color: brown;
+}
+
+.option:hover {
+    background-color: #dc77b7;
+    color: #c51a00;
+}
+
+.input {
+    margin-top: 40px;
+    height: 35px;
+}
+
+.btn {
+    background-color: salmon;
+    margin-top: 40px;
+    margin-left: 30px;
+    height: 35px;
+    text-align: center;
+}
+
+.question {
+    padding: 30px;
+    padding-right: 75px;
 }
