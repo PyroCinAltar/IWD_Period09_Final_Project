@@ -33,15 +33,36 @@ function addCrystal() {
 
 // Functions needed: Dialouge, Progression, Autosave, Inventory, Options, Riddle Text box and button, cutscenes(for the endings)
 
-let forestText = []
-let shrineText = []
-let entraceText = []
-let caveText = []
+
+// let forestText = ["You awaken in an enchanted forest. Soft light and lavendar mist filters through the sakura blossoms.", 
+//     "Before you stands a small pink kitsune, its eyes watching you carefully, studying your every move.", 
+//     "Its face softens.", 
+//     `"Welcome, traveler. You have crossed into another world."`, 
+//     "Your gaze falls to the ground, where a gleaming katana lies. You grab it under the sense that you might need it.", ]
+
+// let shrineText = ["You arrive at the shrine, and the kitsune offers you some tea.", 
+//     `"Have a seat. I have much to discuss with you."`, 
+//     `"My name is ______ and I am very pleased to meet you."`,
+
+//     "Oh, you are in the island of T--", 
+//     "Suddenly, a yokai appears, grabbing everything on sight.", 
+//     "You run and hide behind a table. Out of the corner of your eye, you see an oni mask and grab it without any thought. You hear footsteps approach you.", ""]
+
+// let entraceText = []
+
+// let caveText = []
+
+// let useMask = []
+// let useKatana = []
+// let leftDoor = []
+// let rightDoor = []
+
+
 let newText;
 
 //Function for the start
 
-let stage
+let stage = 0
 
 function Start() {
     //Starting items
@@ -51,34 +72,61 @@ function Start() {
     //Starting message
     updateText(`You awaken in an enchanted forest. Soft light and lavendar mist filters through the sakura blossoms.
 
-Before you stands a small pink kitsune, its eyes watching you carefully, studying your every move.
+        Before you stands a small pink kitsune, its eyes watching you carefully, studying your every move.
 
-Kitsune: "Welcome, traveler. You have crossed into another world."
+        Kitsune: "Welcome, traveler. You have crossed into another world."
 
 Your gaze falls to the ground, where a gleaming katana lies. You grab it under the sense that you might need it.`)
     addKatana()
-    
-    
 
-    changeText()
+    stage ++
 
 
     //Potentially add items that could be equipped in 
     //inventory. Could also add a function?
+    
+    if (stage === 1) {
+       newText = `“Follow me. I must speak with you at the shrine.”
+    
+    (The kitsune gracefully leads you through the forest until you reach an ancient shrine bathed in soft light.)
+    
+    Kitsune:
+    “This place holds many secrets. Tell me, what brings you here?”`
+       changeText(newText)
+    }
+    changeText(newText)
+    alert("klsadfjsa")
 }
+console.log(newText)
+
 Start()
 
+if(stage === 2) {
+   newText = `Suddenly, a yokai crashes through the trees, heading straight for the shrine!
 
-if (Start()) {
-    const newText = `“Follow me. There's something important at the shrine.”
+You glance around in panic your heart pounding.
 
-(The kitsune gracefully leads you through the forest until you reach an ancient shrine bathed in soft light.)
+Near the altar, you spot something...
 
-Kitsune:
-“This place holds many secrets. Tell me, what brings you here?”`
-    changeText(newText)
+A fearsome oni mask rests on a dusty pedestal, pulsing with strange energy.
+
+You grab it and rush straight fohr the shrine with the kitsune trailing behind.
+`
 }
-//
+
+// if(stage == 0) {
+ 
+// changeText( `You awaken in an enchanted forest. Soft light filters through the trees.
+
+// Before you stands a small pink kitsune, its eyes watching you carefully.
+
+// Kitsune: "Welcome, traveler. You have crossed into another world."
+
+// Your gaze falls to the ground, where a gleaming katana lies waiting.`)
+// }else
+
+
+
 
 
 
@@ -88,10 +136,12 @@ Kitsune:
 
 
 //function for changing the text
-function changeText(newText) {
+function changeText(newTexts) {
     window.addEventListener("keydown", (e) => {
         if (e.code === 'Space') {
-            updateText(newText)
+            updateText(newTexts)
+            console.log(stage)
+            stage ++
         }
     })
 }
