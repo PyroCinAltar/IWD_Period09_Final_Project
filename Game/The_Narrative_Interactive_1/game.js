@@ -1,190 +1,150 @@
-const textBox = document.querySelector('.text')
-const screenBox = document.querySelector('.screen')
-const inventory = document.querySelector('.inv')
-const inventoryList = document.querySelector('.inv-list')
-const Option1 = document.querySelector(".option1")
-const Option2 = document.querySelector(".option2")
+const textBox = document.querySelector('.text');
+const screenBox = document.querySelector('.screen');
+const inventory = document.querySelector('.inv');
+const inventoryList = document.querySelector('.inv-list');
 
-
-
-
-
-//  Inventory
-const katana = document.getElementById('katana')
-const mask = document.getElementById('mask')
-const helmet = document.getElementById('helmet')
-const crystal = document.getElementById('crystal')
+// Inventory Items
+const katana = document.getElementById('katana');
+const mask = document.getElementById('mask');
+const helmet = document.getElementById('helmet');
+const crystal = document.getElementById('crystal');
 
 function addKatana() {
-    katana.style.display = 'flex'
+    katana.style.display = 'flex';
 }
 function addMask() {
-    mask.style.display = 'flex'
+    mask.style.display = 'flex';
 }
-function addMelmet() {
-    helmet.style.display = 'flex'
+function addHelmet() {
+    helmet.style.display = 'flex';
 }
 function addCrystal() {
-    crystal.style.display = 'flex'
+    crystal.style.display = 'flex';
 }
 
+// Stage control
+let stage = 0;
 
-
-
-// Functions needed: Dialouge, Progression, Autosave, Inventory, Options, Riddle Text box and button, cutscenes(for the endings)
-
-
-// let forestText = ["You awaken in an enchanted forest. Soft light and lavendar mist filters through the sakura blossoms.", 
-//     "Before you stands a small pink kitsune, its eyes watching you carefully, studying your every move.", 
-//     "Its face softens.", 
-//     `"Welcome, traveler. You have crossed into another world."`, 
-//     "Your gaze falls to the ground, where a gleaming katana lies. You grab it under the sense that you might need it.", ]
-
-// let shrineText = ["You arrive at the shrine, and the kitsune offers you some tea.", 
-//     `"Have a seat. I have much to discuss with you."`, 
-//     `"My name is ______ and I am very pleased to meet you."`,
-
-//     "Oh, you are in the island of T--", 
-//     "Suddenly, a yokai appears, grabbing everything on sight.", 
-//     "You run and hide behind a table. Out of the corner of your eye, you see an oni mask and grab it without any thought. You hear footsteps approach you.", ""]
-
-// let entraceText = []
-
-// let caveText = []
-
-// let useMask = []
-// let useKatana = []
-// let leftDoor = []
-// let rightDoor = []
-
-
-let newText;
-
-//Function for the start
-
-let stage = 0
-
-function Start() {
-    //Starting items
-
-    //adding div to the screen div
-
-    //Starting message
-    updateText(`You awaken in an enchanted forest. Soft light and lavendar mist filters through the sakura blossoms.
-
-        Before you stands a small pink kitsune, its eyes watching you carefully, studying your every move.
-
-        Kitsune: "Welcome, traveler. You have crossed into another world."
-
-Your gaze falls to the ground, where a gleaming katana lies. You grab it under the sense that you might need it.`)
-    addKatana()
-
-    stage ++
-
-
-    //Potentially add items that could be equipped in 
-    //inventory. Could also add a function?
-    
-    if (stage === 1) {
-       newText = `“Follow me. I must speak with you at the shrine.”
-    
-    (The kitsune gracefully leads you through the forest until you reach an ancient shrine bathed in soft light.)
-    
-    Kitsune:
-    “This place holds many secrets. Tell me, what brings you here?”`
-       changeText(newText)
+// Spacebar handler (global)
+function handleSpacePress(e) {
+    if (e.code === 'Space') {
+        Start();
     }
-    changeText(newText)
-    alert("klsadfjsa")
 }
-console.log(newText)
 
-Start()
+// Add listener initially
+window.addEventListener("keydown", handleSpacePress);
 
-if(stage === 2) {
-   newText = `Suddenly, a yokai crashes through the trees, heading straight for the shrine!
+// Submit
+function optionSubmit() {
+    textBox.innerHTML = "";
+}
 
-You glance around in panic your heart pounding.
+// Text update helper
+function updateText(content) {
+    textBox.innerHTML = `<p class="question">${content}</p>`;
+}
+
+// Main flow
+function Start() {
+    switch (stage) {
+        case 0:
+            addKatana();
+            updateText(`You awaken in an enchanted forest. Soft light filters through the trees.
+
+Before you stands a small pink kitsune, its eyes watching you carefully.
+
+Kitsune: "Welcome, traveler. You have crossed into another world."
+
+Your gaze falls to the ground, where a gleaming katana lies waiting. You grab it.`);
+            break;
+        case 1:
+            updateText(`“Follow me. I must speak with you at the shrine.”
+
+(The kitsune gracefully leads you through the forest until you reach an ancient shrine bathed in soft light.)
+
+Kitsune: “This place holds many secrets. Tell me, what brings you here?”`);
+            break;
+        case 2:
+            updateText(`Suddenly, a yokai crashes through the trees, heading straight for the shrine!
+
+You glance around in panic, your heart pounding.
 
 Near the altar, you spot something...
 
 A fearsome oni mask rests on a dusty pedestal, pulsing with strange energy.
 
-You grab it and rush straight fohr the shrine with the kitsune trailing behind.
-`
+You grab it and rush straight for the shrine with the kitsune trailing behind.`);
+            break;
+        case 3:
+            options("How do you confront the yokai?", "Mask", "Katana");
+            window.removeEventListener("keydown", handleSpacePress); // Disable spacebar
+            break;
+        case 4:
+            // addCrystal();
+            updateText(`"With a serious tone, the kitsune requests your aid: a mystical crystal must be found, and only you can help her get it."`);
+            break;
+        default:
+            updateText(`"After countless steps and trials, you finally reach the heart of the hidden glade. There, nestled in stone and light, rests the mystical crystal. The search is over —--------- you’ve found it."
+ THE END
+`);
+            break;
+    }
+
+    stage++;
 }
 
-// if(stage == 0) {
- 
-// changeText( `You awaken in an enchanted forest. Soft light filters through the trees.
+// Options display + listeners
+function options(question, opt1, opt2) {
+    const p = document.createElement('p');
+    p.classList.add('question');
+    p.textContent = question;
 
-// Before you stands a small pink kitsune, its eyes watching you carefully.
+    const button1 = document.createElement('button');
+    button1.classList.add('option', 'option1', opt1);
+    button1.textContent = opt1;
 
-// Kitsune: "Welcome, traveler. You have crossed into another world."
+    const button2 = document.createElement('button');
+    button2.classList.add('option', 'option2', opt2);
+    button2.textContent = opt2;
 
-// Your gaze falls to the ground, where a gleaming katana lies waiting.`)
-// }else
+    textBox.innerHTML = '';
+    textBox.appendChild(p);
+    textBox.appendChild(button1);
+    textBox.appendChild(button2);
 
+    button1.addEventListener('click', () => {
+        optionSubmit();
+        updateText(`You raise the fearsome oni mask to your face.
 
+A chill runs down your spine as ancient energy pulses through you.
 
+The air crackles.
 
+The yokai freezes, sensing something… darker, more powerful.
 
+With a haunting roar, the mask emits a wave of illusion and fear.
 
+The yokai stumbles back, screeching, before vanishing into the trees.
 
+Kitsune: “Clever one… you wield more than just strength. You understand fear.”`);
 
+        window.addEventListener("keydown", handleSpacePress); // Re-enable spacebar
+    });
 
+    button2.addEventListener('click', () => {
+        optionSubmit();
+        updateText(`You grip the katana tightly, its blade gleaming in the shrine’s light.
 
+With a cry, you charge the yokai head-on.
 
-//function for changing the text
-function changeText(newTexts) {
-    window.addEventListener("keydown", (e) => {
-        if (e.code === 'Space') {
-            updateText(newTexts)
-            console.log(stage)
-            stage ++
-        }
-    })
+Steel clashes against shadow, sparks flying in the air.
+
+The yokai howls but you press on, delivering a final strike that banishes it in a burst of smoke.
+
+Kitsune: “You’re strong… and fearless. Perhaps even strong enough for what lies ahead.”`);
+
+        window.addEventListener("keydown", handleSpacePress); // Re-enable spacebar
+    });
 }
-
-
-//TEXT 
-function updateText(content) {
-    textBox.innerHTML = `<p class="question">${content}</p>`;
-}
-
-function options(question, option1, option2) {
-    let p = document.createElement('p')
-    p.classList.add('question')
-    p.textContent = question
-
-    let button1 = document.createElement('button')
-    button1.classList.add('option')
-    button1.classList.add('option1')
-    button1.classList.add(option1)
-    button1.textContent = option1
-
-    let button2 = document.createElement('button')
-    button2.classList.add('option')
-    button2.classList.add('option2')
-    button2.classList.add(option2)
-    button2.textContent = option2
-
-    textBox.appendChild(p)
-    textBox.appendChild(button1)
-    textBox.appendChild(button2)
-
-}
-
-function optionSubmit() {
-    textBox.innerHTML = ''
-}
-
-function addText(question) {
-    textBox.innerHTML = `<p class="question">${question}</p>
-                    <input type="text" class="input col-sm-3">
-                    <button class="btn">Submit</button> `
-}
-
-
-
 
