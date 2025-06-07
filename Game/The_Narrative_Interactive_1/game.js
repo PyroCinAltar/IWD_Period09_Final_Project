@@ -1,9 +1,10 @@
+// ----------- Inventory Elements -----------
+
 const textBox = document.querySelector('.text');
 const screenBox = document.querySelector('.screen');
 const inventory = document.querySelector('.inv');
 const inventoryList = document.querySelector('.inv-list');
 
-// Inventory Items
 const katana = document.getElementById('katana');
 const mask = document.getElementById('mask');
 const helmet = document.getElementById('helmet');
@@ -22,41 +23,72 @@ function addCrystal() {
     crystal.style.display = 'flex';
 }
 
-// Stage control
+// ----------- Stage Tracking -----------
+
 let stage = 0;
 
-// Spacebar handler (global)
-function handleSpacePress(e) {
-    if (e.code === 'Space') {
-        Start();
+// ----------- Local Storage -----------
+
+function saveProgress() {
+    localStorage.setItem('stage', stage);
+    localStorage.setItem('inventory', JSON.stringify({
+        katana: katana.style.display === 'flex',
+        mask: mask.style.display === 'flex',
+        helmet: helmet.style.display === 'flex',
+        crystal: crystal.style.display === 'flex'
+    }));
+}
+
+function loadProgress() {
+    const savedStage = localStorage.getItem('stage');
+    const savedInventory = JSON.parse(localStorage.getItem('inventory'));
+
+    if (savedStage !== null) {
+        stage = parseInt(savedStage);
+    }
+
+    if (savedInventory) {
+        if (savedInventory.katana) addKatana();
+        if (savedInventory.mask) addMask();
+        if (savedInventory.helmet) addHelmet();
+        if (savedInventory.crystal) addCrystal();
     }
 }
 
-// Add listener initially
+// ----------- Spacebar Handler -----------
+
+function handleSpacePress(e) {
+    if (e.code === 'Space') {
+        stage++;
+        Start();
+        saveProgress();
+    }
+}
 window.addEventListener("keydown", handleSpacePress);
 
-// Submit
+// ----------- Text Box Handling -----------
+
 function optionSubmit() {
     textBox.innerHTML = "";
 }
 
-// Text update helper
 function updateText(content) {
     textBox.innerHTML = `<p class="question">${content}</p>`;
 }
 
-// Main flow
+// ----------- Story Flow Control -----------
+
 function Start() {
     switch (stage) {
         case 0:
             addKatana();
             updateText(`You awaken in an enchanted forest. Soft light filters through the trees.
-
-Before you stands a small pink kitsune, its eyes watching you carefully.
-
-Kitsune: "Welcome, traveler. You have crossed into another world."
-
-Your gaze falls to the ground, where a gleaming katana lies waiting. You grab it.`);
+                
+                Before you stands a small pink kitsune, its eyes watching you carefully.
+                
+                Kitsune: "Welcome, traveler. You have crossed into another world."
+                
+                Your gaze falls to the ground, where a gleaming katana lies waiting. You grab it`);
             break;
         case 1:
             updateText(`“Follow me. I must speak with you at the shrine.”
@@ -66,7 +98,8 @@ Your gaze falls to the ground, where a gleaming katana lies waiting. You grab it
 Kitsune: “This place holds many secrets. Tell me, what brings you here?”`);
             break;
         case 2:
-            updateText(`Suddenly, a yokai crashes through the trees, heading straight for the shrine!
+            addMask();
+            updateText(`(Suddenly, a yokai crashes through the trees, heading straight for the shrine!
 
 You glance around in panic, your heart pounding.
 
@@ -78,23 +111,21 @@ You grab it and rush straight for the shrine with the kitsune trailing behind.`)
             break;
         case 3:
             options("How do you confront the yokai?", "Mask", "Katana");
-            window.removeEventListener("keydown", handleSpacePress); // Disable spacebar
+            window.removeEventListener("keydown", handleSpacePress);
             break;
         case 4:
-            // addCrystal();
             updateText(`"With a serious tone, the kitsune requests your aid: a mystical crystal must be found, and only you can help her get it."`);
             break;
-        default:
+        case 5:
             updateText(`"After countless steps and trials, you finally reach the heart of the hidden glade. There, nestled in stone and light, rests the mystical crystal. The search is over —--------- you’ve found it."
- THE END
-`);
+ THE END`);
             break;
     }
-
-    stage++;
+    console.log(stage)
 }
 
-// Options display + listeners
+// ----------- Option Handler -----------
+
 function options(question, opt1, opt2) {
     const p = document.createElement('p');
     p.classList.add('question');
@@ -113,9 +144,9 @@ function options(question, opt1, opt2) {
     textBox.appendChild(button1);
     textBox.appendChild(button2);
 
-    button1.addEventListener('click', () => {
-        optionSubmit();
-        updateText(`You raise the fearsome oni mask to your face.
+  button1.addEventListener('click', () => {
+    optionSubmit();
+    updateText(`You raise the fearsome oni mask to your face.
 
 A chill runs down your spine as ancient energy pulses through you.
 
@@ -127,14 +158,16 @@ With a haunting roar, the mask emits a wave of illusion and fear.
 
 The yokai stumbles back, screeching, before vanishing into the trees.
 
-Kitsune: “Clever one… you wield more than just strength. You understand fear.”`);
+Kitsune: “Clever one… you wield more than just strength. You understand fear and have the knowledge to use that fear. I suppose that's useful”`);
+    // stage++;
+    saveProgress();
+    window.addEventListener("keydown", handleSpacePress);
+    // setTimeout(() => Start(), 1000); // ✅ slight delay for effect
+});
 
-        window.addEventListener("keydown", handleSpacePress); // Re-enable spacebar
-    });
-
-    button2.addEventListener('click', () => {
-        optionSubmit();
-        updateText(`You grip the katana tightly, its blade gleaming in the shrine’s light.
+button2.addEventListener('click', () => {
+    optionSubmit();
+    updateText(`You grip the katana tightly, its blade gleaming in the shrine’s light.
 
 With a cry, you charge the yokai head-on.
 
@@ -143,8 +176,46 @@ Steel clashes against shadow, sparks flying in the air.
 The yokai howls but you press on, delivering a final strike that banishes it in a burst of smoke.
 
 Kitsune: “You’re strong… and fearless. Perhaps even strong enough for what lies ahead.”`);
+    // stage++; 
+    saveProgress();
+    window.addEventListener("keydown", handleSpacePress);
+    // setTimeout(() => Start(), 1000); // ✅ slight delay for effect
+});
 
-        window.addEventListener("keydown", handleSpacePress); // Re-enable spacebar
-    });
+
+    console.log(stage);
 }
 
+// ----------- Page Load Event -----------
+
+window.addEventListener("load", () => {
+    loadProgress();
+
+    if (stage < 6) {
+        Start();
+    } else {
+        updateText(`You've completed the story. Press R to restart.`);
+    }
+});
+
+// ----------- Restart (R key) -----------
+
+function handleRestart(e) {
+    if (e.code === 'KeyR') {
+        localStorage.clear();
+        location.reload();
+    }
+}
+window.addEventListener("keydown", handleRestart);
+
+
+// `I slip through cracks without a sound,
+// No shape I keep, no edge or bound.
+// I carry scent, I lift the leaf,
+// I howl in joy, or whisper grief.
+// You feel me pass, but can’t hold tight —
+// What am I?`
+
+// `气`
+
+// `火`
