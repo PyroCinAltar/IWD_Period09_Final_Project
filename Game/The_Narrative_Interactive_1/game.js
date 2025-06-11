@@ -96,6 +96,7 @@ function Start() {
 (The kitsune gracefully leads you through the forest until you reach an ancient shrine bathed in soft light.)
 
 Kitsune: “This place holds many secrets. Tell me, what brings you here?”`);
+// updateImage('/Game/Test_Image/Screenshot 2024-08-29 at 4.45.49 PM.png')
             break;
         case 2:
             addMask();
@@ -289,11 +290,14 @@ You are no longer a visitor here.
             }
     }
     console.log(stage)
-
-
-
 }
 
+
+//IMAGE FUNCTION
+
+function updateImage(image){
+    screenBox.style.background = `url("${image}")`
+}
 // ----------- Option Handler -----------
 
 function options(question, opt1, opt2) {

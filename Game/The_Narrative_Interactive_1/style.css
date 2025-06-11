@@ -14,7 +14,9 @@ body {
 
 .screen {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    /* align-items: flex-end; */
+    justify-content: flex-end;
     border-left: none;
     background-color: cadetblue;
     border-right: none;
@@ -87,3 +89,20 @@ body {
     padding: 30px;
     padding-right: 75px;
 }
+
+.screen {
+    background: url('/Game/Test_Image/Screenshot\ 2024-05-05\ at\ 11.35.42\ AM.png');
+    background-repeat: no-repeat;
+    background-size: 150vh;
+}
+/* 
+.sceneScreen {
+    display: flex;
+    flex-direction: ;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    height: 70vh;
+} */
