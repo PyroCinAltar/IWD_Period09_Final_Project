@@ -91,9 +91,11 @@ body {
 }
 
 .screen {
-    background: url('/Game/Test_Image/Screenshot\ 2024-05-05\ at\ 11.35.42\ AM.png');
+    background: url('/Game/Test_Image/1.jpeg');
     background-repeat: no-repeat;
     background-size: 150vh;
+    background-size: cover;
+    background-position: center;
 }
 /* 
 .sceneScreen {

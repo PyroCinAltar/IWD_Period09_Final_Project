@@ -88,7 +88,7 @@ function Start() {
                 
                 Kitsune: "Welcome, traveler. You have crossed into another world."
                 
-                Your gaze falls to the ground, where a gleaming katana lies waiting. You grab it`);
+                Your gaze falls to the ground, where a gleaming katana lies waiting. You grab it.`);
             break;
         case 1:
             updateText(`“Follow me. I must speak with you at the shrine.”
