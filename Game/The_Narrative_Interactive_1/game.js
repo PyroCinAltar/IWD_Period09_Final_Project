@@ -110,7 +110,7 @@ Near the altar, you spot something...
 A fearsome oni mask rests on a dusty pedestal, pulsing with strange energy.
 
 You grab it and rush straight for the shrine with the kitsune trailing behind.`);
-updateImage('/Game/Image/Ambush.jpg')
+updateImage('Game/Image/Ambush.jpg')
             break;
         case 3:
             options("How do you confront the yokai?", "Mask", "Katana");
