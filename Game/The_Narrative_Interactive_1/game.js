@@ -118,7 +118,7 @@ updateImage('Game/Image/Ambush.jpg')
             break;
         case 4:
             updateText(`With a serious tone, the kitsune requests your aid: a mystical crystal must be found, and only you can help her get it. You say yes and she give you a satchel to cary your new belongings`);
-            updateImage('/Game/Image/Ask.jpg')
+            updateImage('Game/Image/Ask.jpg')
             break;
         case 5:
             updateText(`You tread carefully through the thick forest, following the kitsune's quiet footsteps.
@@ -132,7 +132,7 @@ Kitsune: "This is the Trial Chamber. Beyond this entrance lies a riddle meant to
 A gust of wind escapes the cave — not natural, but whispering… as if it remembers every answer and failure.
 
 Kitsune: "If you are ready... step forward."`)
-updateImage('/Game/Image/Approach.jpg')
+updateImage('Game/Image/Approach.jpg')
             break;
         case 6:
             options(`Engraved in the wall, the wind reads aloud the flowwing: I slip through cracks with the occasional sound,
@@ -168,7 +168,7 @@ Without another word, she turns and walks into the misty forest.`) {
 The trial has ended — not with glory, but with doubt.
 
 Press R to restart.`)
-updateImage('/Game/Image/Abandoned.jpg')
+updateImage('Game/Image/Abandoned.jpg')
 
             } else if (textBox.textContent === `You speak your answer with steady confidence.
 
@@ -203,7 +203,7 @@ She gestures toward the pedestal.
 Kitsune: "That is what you came for. But be warned… the cave tests more than knowledge. It reveals what lies beneath."
 
 A faint hum vibrates in your chest. Something is awakening.`);
-updateImage('/Game/Image/Abandoned.jpg')
+updateImage('Game/Image/Abandoned.jpg')
             }
             break;
         case 8:
@@ -222,7 +222,7 @@ Visions, fragments of truth, languages you never studied, symbols you now unders
 As you place it on your head, a soft shimmer encases your body. Protection. Insight. Legacy.
 
 Kitsune: "You chose wisely… But wisdom comes with burden. Are you prepared?"`);
-updateImage('/Game/Image/Helmet.jpg')
+updateImage('Game/Image/Helmet.jpg')
             break;
         case 9:
             options(`Do you take the helmet?`, "Yes", "No")
@@ -247,7 +247,7 @@ The kitsune’s eyes widen, both in awe and fear.
 
 Kitsune: *"It has chosen you. The crystal accepts your touch… but now the world will watch what you do with its gift."*`);
             addCrystal()
-            updateImage('/Game/Image/Crystal.jpg')
+            updateImage('Game/Image/Crystal.jpg')
             break;
         case 11:
             if (getComputedStyle(helmet).display === 'flex') {
@@ -266,7 +266,7 @@ The mist parts before you as if the forest itself senses your resolve. The trees
 You are no longer a visitor here.
 
 **You’ve chosen the path of purpose. You stay. And the real journey begins.**`);
-updateImage('/Game/Image/Stay.jpg')
+updateImage('Game/Image/Stay.jpg')
 
             } else {
                 options("What do you do with your newfound power?", "Return-Home", "Stay-Here")
@@ -293,7 +293,7 @@ You are no longer a visitor here.
                 updateText(`Unknowingly, above you, a figure in black watches over you, katana gripped in one hand, pieces of paper on the other. He watches you intently, with wonder.
                     The End.......                       Press R to restart.
                     `)
-                    updateImage('/Game/Image/Watching.jpg')
+                    updateImage('Game/Image/Watching.jpg')
             } else {
                 updateText(`The End.......                       Press R to restart.`)
             }
@@ -354,7 +354,7 @@ With a haunting roar, the mask emits a wave of illusion and fear.
 The yokai stumbles back, screeching, before vanishing into the trees.
 
 Kitsune: “Clever one… you wield more than just strength. You understand fear and have the knowledge to use that fear. I suppose that's useful”`);
-updateImage('/Game/Image/Mask.jpg')
+updateImage('Game/Image/Mask.jpg')
         } else if (opt1 === '气') {
             updateText(`You speak your answer aloud.
 
@@ -389,7 +389,7 @@ For a moment, the world stands still.
 Your thoughts sharpen. Echoes of truths you’ve never known come rushing in. Ancient riddles unravel. Hidden dangers make sense. And with it all... a calm, like unseen armor settling over your shoulders.
 
 Kitsune: *"The Helmet of Knowledge has accepted you. Use its gift wisely — for insight is power, but it is also burden."*`)
-updateImage('/Game/Image/Take.jpg')
+updateImage('Game/Image/Take.jpg')
             addHelmet()
         } else if (opt1 === 'Return-Home') {
 
@@ -414,7 +414,7 @@ As you step away from the unknown and toward the life you once knew, a breeze ca
 
 And so, with a heart half heavy and half relieved,  
 **you go home.**`);
-updateImage('/Game/Image/Home.jpg')
+updateImage('Game/Image/Home.jpg')
 
         }
 
@@ -439,7 +439,7 @@ Steel clashes against shadow, sparks flying in the air.
 The yokai howls but you press on, delivering a final strike that banishes it in a burst of smoke.
 
 Kitsune: “You’re strong… and fearless. Perhaps even strong enough for what lies ahead.”`);
-updateImage('/Game/Image/Attack.jpg')
+updateImage('Game/Image/Attack.jpg')
 
         } else if (opt2 === "火") {
             updateText(`You speak your answer with steady confidence.
@@ -457,7 +457,7 @@ She steps beside you, her voice now solemn.
 Kitsune: "This place was built to guard ancient knowledge — and only those with insight may pass."
 
 Together, you walk into the glowing chamber, shadows dancing along the ancient walls as the cave reveals its secrets...`);
-updateImage('/Game/Image/Enter.jpg')
+updateImage('Game/Image/Enter.jpg')
 
         } else if (opt2 === 'No') {
             updateText(`Your eyes scan the room, stopping on the ancient helmet resting upon the altar — a relic humming faintly with forgotten wisdom. Its surface is etched with symbols that seem to shimmer as if alive.
@@ -475,7 +475,7 @@ Kitsune: *"You choose to walk forward with your own mind, unclouded by the burde
 As you step past the altar, the helmet dims — almost as if it respects your choice. The air grows colder, the path more uncertain, but your resolve burns brighter.
 
 You will face what comes with nothing but your own strength... and your will.`)
-updateImage('/Game/Image/Leave.jpg')
+updateImage('Game/Image/Leave.jpg')
         } else if (opt2 === 'Stay-Here') {
 
             updateText(`You stand at the crossroads, the wind brushing against your face like a whisper from the unknown. The path home calls with memories of warmth and simplicity… but your feet refuse to move.
@@ -493,7 +493,7 @@ As you leave the chamber, the mist parts before you as if the forest itself sens
 You are no longer a visitor here.
 
 **You’ve chosen the path of purpose. You stay. And the real journey begins.**`);
-updateImage('/Game/Image/Stay.jpg')
+updateImage('Game/Image/Stay.jpg')
 
 
 
