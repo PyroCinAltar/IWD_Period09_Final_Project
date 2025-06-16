@@ -89,7 +89,7 @@ function Start() {
                 Kitsune: "Welcome, traveler. You have crossed into another world."
                 
                 Your gaze falls to the ground, where a gleaming katana lies waiting. You grab it.`);
-                updateImage('/Game/Image/Entry.jpg')
+                updateImage('Game/Image/Entry.jpg')
             break;
         case 1:
             updateText(`“Follow me. I must speak with you at the shrine.”
@@ -97,7 +97,7 @@ function Start() {
 (The kitsune gracefully leads you through the forest until you reach an ancient shrine bathed in soft light.)
 
 Kitsune: “This place holds many secrets. Tell me, what brings you here?”`);
- updateImage('/Game/Image/To_Shrine.jpg')
+ updateImage('Game/Image/To_Shrine.jpg')
             break;
         case 2:
             addMask();
