@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    background-color: #131313;
+}
+
+.screen,
+.inv {
+    border: 10px solid white;
+    /* border-radius: 5px; */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-end; */
+    justify-content: flex-end;
+    border-left: none;
+    background-color: cadetblue;
+    border-right: none;
+}
+
+.inv {
+    padding: 3px;
+    border-right: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    border: 5px solid white;
+    border-radius: 5px;
+    height: 25vh;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    background-color: #131313;
+
+}
+
+.inv-top {
+    padding-top: 10px;
+}
+
+.item {
+    display: none;
+    list-style-type: none;
+    border: 5px solid white;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 2px;
+    width: 20vh;
+    right: 0;
+}
+
+.option {
+    border: none;
+    border-radius: 30px;
+    margin: 10px;
+    width: 20vh;
+    background-color: pink;
+    color: brown;
+}
+
+.option:hover {
+    background-color: #dc77b7;
+    color: #c51a00;
+}
+
+.input {
+    margin-top: 40px;
+    height: 35px;
+}
+
+.btn {
+    background-color: salmon;
+    margin-top: 40px;
+    margin-left: 30px;
+    height: 35px;
+    text-align: center;
+}
+
+.question {
+    padding: 30px;
+    padding-right: 75px;
+}
+
+.screen {
+    background: url('/Game/Image/Entry.jpg');
+    background-repeat: no-repeat;
+    /* background-size: 150vh; */
+    background-size: cover;
+    background-position: center;
+}
+/* 
+.sceneScreen {
+    display: flex;
+    flex-direction: ;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    height: 70vh;
+} */
