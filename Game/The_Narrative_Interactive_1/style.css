@@ -91,7 +91,7 @@ body {
 }
 
 .screen {
-    background: url('/Game/Image/Entry.jpg');
+    background: url('Game/Image/Entry.jpg');
     background-repeat: no-repeat;
     /* background-size: 150vh; */
     background-size: cover;
